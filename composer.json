@@ -1,0 +1,31 @@
+{
+    "name": "webee-school/php-kata-bank-ocr",
+    "type": "project",
+    "license": "GPL-3.0-only",
+    "homepage": "https://webee.school",
+    "authors": [
+        {
+            "name": "Adam Wojciechowski",
+            "email": "adam@webee.online",
+            "homepage": "https://webee.online"
+        }
+    ],
+    "require": {
+        "php": ">=8.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.18",
+        "kahlan/kahlan": "^5.0",
+        "symfony/var-dumper": "^5.2"
+    },
+    "autoload":{
+        "psr-4": {
+            "WeBee\\School\\BankOcrKata\\": "src/"
+        }
+    },
+    "autoload-dev":{
+        "psr-4": {
+            "WeBee\\School\\BankOcrKata\\Spec\\": "spec/"
+        }
+    }
+}

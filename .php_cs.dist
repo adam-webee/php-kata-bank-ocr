@@ -1,0 +1,15 @@
+<?php
+
+return PhpCsFixer\Config::create()
+    ->setUsingCache(false)
+    ->setRiskyAllowed(false)
+    ->setRules([
+        '@PSR12' => true,
+        '@Symfony' => true,
+    ])
+    ->setFinder(
+        PhpCsFixer\Finder::create()
+            ->in(__DIR__)
+            ->append([__DIR__.'.php_sc.dist'])
+    )
+;
