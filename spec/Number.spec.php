@@ -28,5 +28,26 @@ describe(
                 expect($n->getRaw())->toBe('aaa');
             }
         );
+
+        given(
+            'testNumbers',
+            function () {
+                return [
+                    '000000000' => file_get_contents(__DIR__.'//test_files//Numbers//000000000.txt'),
+                ];
+            }
+        );
+
+        it(
+            'can correctly parse numbers',
+            function () {
+                foreach ($this->testNumbers as $expect => $given) {
+                    $n = new Number($given);
+
+                    expect($n->get())->toBeA('string');
+                    expect($n->get())->toBe((string) $expect);
+                }
+            }
+        );
     }
 );
