@@ -57,5 +57,14 @@ describe(
                 }
             }
         );
+
+        it(
+            'can return null for not recognized digit',
+            function () {
+                $d = new Digit("___\n___\n___");
+
+                expect($d->get())->toBe(null);
+            }
+        );
     }
 );
