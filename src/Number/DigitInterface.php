@@ -6,4 +6,5 @@ namespace WeBee\School\BankOcrKata\Number;
 
 interface DigitInterface
 {
+    public function getRaw(): string;
 }

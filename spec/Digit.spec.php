@@ -12,10 +12,19 @@ describe(
         it(
             'can be instantiated',
             function () {
-                $d = new Digit();
+                $d = new Digit('');
 
                 expect($d)->toBeAnInstanceOf('WeBee\School\BankOcrKata\Number\Digit');
                 expect($d)->toBeAnInstanceOf('WeBee\School\BankOcrKata\Number\DigitInterface');
+            }
+        );
+
+        it(
+            'can return raw digit in unchanged form',
+            function () {
+                $d = new Digit('aaa');
+
+                expect($d->getRaw())->toBe('aaa');
             }
         );
     }
