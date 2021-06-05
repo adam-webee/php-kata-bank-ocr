@@ -6,6 +6,8 @@ namespace WeBee\School\BankOcrKata\Number;
 
 class Number implements NumberInterface
 {
+    private const EXPECTED_LINE_LENGTH = 27;
+
     private string $parsed;
 
     public function __construct(private string $rawNumber)
@@ -25,13 +27,10 @@ class Number implements NumberInterface
 
     private function parse(): void
     {
-        $lines = explode("\n", $this->rawNumber);
-        $lines = array_slice($lines, 0, 3);
+        $lines = $this->parseLines();
         $digits = [];
 
-        foreach ($lines as $line) {
-            $line = str_pad($line, 27, ' ');
-            $lineBlocks = str_split($line, 3);
+        foreach ($lines as $lineBlocks) {
             $index = 0;
             foreach ($lineBlocks as $lineBlock) {
                 if (!isset($digits[$index])) {
@@ -47,5 +46,16 @@ class Number implements NumberInterface
             $digit = new Digit($rawDigit);
             $this->parsed .= $digit->get();
         }
+    }
+
+    private function parseLines(): array
+    {
+        $parsedLines = array_slice(explode("\n", $this->rawNumber), 0, 3);
+
+        foreach ($parsedLines as &$line) {
+            $line = str_split(str_pad($line, self::EXPECTED_LINE_LENGTH, ' '), 3);
+        }
+
+        return $parsedLines;
     }
 }
