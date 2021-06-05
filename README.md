@@ -3,3 +3,4 @@ Example solution for [Bank OCR Kata](https://codingdojo.org/kata/BankOCR/). The 
 
 ### Version to articles map
 * 1.0.0 -> [PHP Kata: Bank OCR Introduction](https://webee.school/coding/php/kata/bank-ocr-introduction.html)
+* 2.0.0 -> [PHP Kata: Bank OCR Numbers part](https://webee.school/coding/php/kata/bank-ocr-numbers-part.html)
