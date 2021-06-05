@@ -25,6 +25,27 @@ class Number implements NumberInterface
 
     private function parse(): void
     {
-        $this->parsed = '000000000';
+        $lines = explode("\n", $this->rawNumber);
+        $lines = array_slice($lines, 0, 3);
+        $digits = [];
+
+        foreach ($lines as $line) {
+            $line = str_pad($line, 27, ' ');
+            $lineBlocks = str_split($line, 3);
+            $index = 0;
+            foreach ($lineBlocks as $lineBlock) {
+                if (!isset($digits[$index])) {
+                    $digits[$index] = '';
+                }
+                $digits[$index++] .= "$lineBlock\n";
+            }
+        }
+
+        $this->parsed = '';
+
+        foreach ($digits as $rawDigit) {
+            $digit = new Digit($rawDigit);
+            $this->parsed .= $digit->get();
+        }
     }
 }
