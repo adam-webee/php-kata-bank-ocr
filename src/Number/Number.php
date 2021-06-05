@@ -27,22 +27,18 @@ class Number implements NumberInterface
 
     private function parse(): void
     {
-        $lines = $this->parseLines();
-        $digits = [];
+        $this->parseDigits($this->parseLines());
+    }
 
-        foreach ($lines as $lineBlocks) {
-            $index = 0;
-            foreach ($lineBlocks as $lineBlock) {
-                if (!isset($digits[$index])) {
-                    $digits[$index] = '';
-                }
-                $digits[$index++] .= "$lineBlock\n";
-            }
-        }
-
+    private function parseDigits(array $lines): void
+    {
         $this->parsed = '';
 
-        foreach ($digits as $rawDigit) {
+        foreach ($lines[0] as $index => $block) {
+            $rawDigit = implode(
+                "\n",
+                [$block ?? '', $lines[1][$index] ?? '', $lines[2][$index] ?? '']
+            );
             $digit = new Digit($rawDigit);
             $this->parsed .= $digit->get();
         }
