@@ -34,6 +34,7 @@ describe(
             function () {
                 return [
                     '000000000' => file_get_contents(__DIR__.'//test_files//Numbers//000000000.txt'),
+                    '123456789' => file_get_contents(__DIR__.'//test_files//Numbers//123456789.txt'),
                 ];
             }
         );
