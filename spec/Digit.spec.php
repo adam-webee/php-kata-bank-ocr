@@ -33,10 +33,10 @@ describe(
             function () {
                 return [
                     0 => " _ \n| |\n|_|",
-                    1 => "     |  |",
-                    2 => " _ # _|#|_ ",
+                    1 => '     |  |',
+                    2 => ' _ # _|#|_ ',
                     3 => " _ \n _|\n _|",
-                    4 => "   A|_|B  |",
+                    4 => '   A|_|B  |',
                     5 => " _ \n|_ \n _|",
                     6 => " _ \n|_ \n|_|",
                     7 => " _ \n  |\n  |",
@@ -49,7 +49,7 @@ describe(
         it(
             'can return parsed digit',
             function () {
-                foreach($this->digitExamples as $expected => $given) {
+                foreach ($this->digitExamples as $expected => $given) {
                     $d = new Digit($given);
 
                     expect($d->get())->toBeAn('integer');
