@@ -33,7 +33,21 @@ describe(
         given(
             'input',
             function () {
-                return new ArrayInput(['command' => 'parse']);
+                return new ArrayInput([
+                    'command' => 'parse',
+                    'file' => __DIR__.'//test_files//Numbers//123456789.txt',
+                ]);
+            }
+        );
+
+        it(
+            'will return error with no file argument passed',
+            function () {
+                $inputWithNoArgument = new ArrayInput(['command' => 'parse']);
+
+                $result = $this->app->run($inputWithNoArgument, $this->output);
+
+                expect($result)->toBe(1);
             }
         );
 
