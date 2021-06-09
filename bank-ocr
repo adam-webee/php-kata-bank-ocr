@@ -28,8 +28,11 @@ require_once $file;
 unset($possibleFiles, $possibleFile, $file);
 
 use Symfony\Component\Console\Application;
+use WeBee\School\BankOcrKata\Command\ParseCommand;
 
 $app = new Application('Bank OCR', '1.0');
+$app->add(new ParseCommand());
+
 $app->run();
 
 __halt_compiler();
