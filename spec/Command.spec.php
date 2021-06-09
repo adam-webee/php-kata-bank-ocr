@@ -56,7 +56,16 @@ describe(
             function () {
                 $result = $this->app->run($this->input, $this->output);
 
-                expect($this->output->fetch())->toBeEmpty();
+                expect($result)->toBe(0);
+            }
+        );
+
+        it(
+            'can parse statement file correctly',
+            function () {
+                $result = $this->app->run($this->input, $this->output);
+
+                expect($this->output->fetch())->toBe('123456789'.PHP_EOL);
                 expect($result)->toBe(0);
             }
         );
